@@ -1,0 +1,4 @@
+export rvm_path="$HOME/.rvm"
+
+#rvm --default use 1.9.3
+#rvm default

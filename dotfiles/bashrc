@@ -1,0 +1,8 @@
+. ~/bin/dotfiles/bash/env
+. ~/bin/dotfiles/bash/config
+. ~/bin/dotfiles/bash/aliases
+
+. ~/bin/dotfiles/plugins/completion/git.completion.bash
+. ~/bin/dotfiles/plugins/completion/git_flow.completion.bash
+. ~/bin/dotfiles/plugins/completion/tmux.completion.bash
+. ~/bin/dotfiles/plugins/completion/ssh.completion.bash

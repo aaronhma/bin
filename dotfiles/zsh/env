@@ -1,0 +1,37 @@
+. ~/bin/dotfiles/bash/env
+
+vs() {
+ args=$(printf "%s " "$@") # concatenate arguments into single string
+ vagrant ssh -c "$args"
+}
+
+# https://github.com/zsh-users/zaw
+source $HOME/bin/dotfiles/plugins/zaw/zaw.zsh
+
+# https://github.com/zsh-users/zsh-syntax-highlighting
+source $HOME/bin/dotfiles/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# https://github.com/zsh-users/zsh-history-substring-search
+source $HOME/bin/dotfiles/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+# https://iterm2.com/documentation-shell-integration.html
+# Alert: Shell intergration need to install the script first
+source ~/.iterm2_shell_integration.zsh
+
+# bind UP and DOWN arrow keys
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# bind UP and DOWN arrow keys (compatibility fallback
+# for Ubuntu 12.04, Fedora 21, and MacOSX 10.9 users)
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# bind P and N for EMACS mode
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+
+# bind k and j for VI mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down

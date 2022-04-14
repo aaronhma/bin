@@ -1,0 +1,34 @@
+# ~/development   run this command for setup the TMUX environment
+tmux has-session -t development
+if [ $? != 0 ]
+then
+	# create a new tmux session called “development
+	tmux new-session -s development -n general -d
+
+	# uses tmux’s send-keys command to change the directory. place C-m at the end of the line to send the Carriage Return sequence
+	# Sends the keystrokes to the “development” session’s active window or pane. C-m is equivalent to pressing the ENTER key.
+	# tmux send-keys -t development 'cd ~/devproject' C-m
+
+	# repeat this command to open the Vim text editor in that window
+	# tmux send-keys -t development "couchdb" C-m
+
+	tmux split-window -h -t development
+
+	# tmux split-window -v -p 10 -t development
+
+	# select one of the default tmux layouts—the main-horizontal one
+	# Sets the layout for the “development”session to main-horizontal.
+	tmux select-layout -t development main-vertical
+
+	# send a command to Pane 2, we target a pane using the format [session]:[window].[pane]
+	# tmux send-keys -t development:1.2 'cd ~/devproject' C-m
+
+	# Creating and Selecting Windows. a second window in our session that will be a full-screen console
+	tmux new-window -n server -t development
+	#tmux send-keys -t development:2 'cd ~/devproject' C-m
+
+	# start up our session, we want our first window to be displayed
+	# Selects the first window of “development,” making it the active window.
+	tmux select-window -t development:1
+fi
+tmux attach -t development
