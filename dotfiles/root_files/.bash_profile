@@ -1,8 +1,6 @@
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
-# . ~/bin/dotfiles/bashrc
-# . ~/bin/dotfiles/bash/config
 
 # Load ~/.bash_prompt, ~/.exports, ~/.aliases, ~/.functions and ~/.extra
 # ~/.extra can be used for settings you don't want to commit
@@ -39,19 +37,12 @@ export LANG="en_US"
 # complete -W "NSGlobalDomain" defaults
 
 # Add `killall` tab completion for common apps
-# complete -o "nospace" -W "Finder Dock Mail Safari iTunes iCal Address\ Book SystemUIServer" killall
+# complete -o "nospace" -W "Finder Dock Mail Chrome SystemUIServer" killall
 
 # If possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
-# export ANDROID_HOME=/usr/local/Caskroom/android-sdk/3859397
-export JAVA_HOME=/Library/Java/Home
-# export ANDROID_HOME=/usr/local/share/android-sdk
-export JAVA_HOME=/Library/Java/Home
-# export ANDROID_HOME=/usr/local/share/android-sdk
-export JAVA_HOME=/Library/Java/Home
-source ~/.bash_profile
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
+source ~/.bash_profile
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then

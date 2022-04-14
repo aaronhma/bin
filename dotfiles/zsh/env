@@ -1,9 +1,71 @@
-. ~/bin/dotfiles/bash/env
+# OpenSSL
+# export LDFLAGS="-L/usr/local/opt/openssl/lib"
+# export CPPFLAGS="-I/usr/local/opt/openssl/include"
 
-vs() {
- args=$(printf "%s " "$@") # concatenate arguments into single string
- vagrant ssh -c "$args"
-}
+export PYTHON3_PACKAGE_PATH=~/Library/Python/3.8/bin
+# Set PATH, CDPATH, EDITOR, etc.
+# PATH variable for use with MacPorts. /opt/local/bin
+export PATH=/usr/local/bin:/usr/local/git/bin:$PYTHON3_PACKAGE_PATH:/usr/local/sbin:/usr/sbin:/bin:/usr/bin:/opt/local/bin:/opt/local/sbin:$HOME/local/bin:/sbin/:$HOME/bin/dotfiles/plugins/zsh-completions/src
+
+# set vim options
+export VIMINIT='set ai aw'
+
+# Window names are not displaying properly
+export DISABLE_AUTO_TITLE=true
+
+# Prevent overwriting files
+# set +/-o :  turns shell features On/Off
+set -o noclobber
+
+# launchctl limit maxfiles 2048 7200
+
+# ulimit -n 1000
+
+# Turn off "you have new mail" notice
+# unset MAILCHECK
+
+source $HOME/bin/dotfiles/plugins/z/z.sh
+
+# https://github.com/aziz/tmuxinator
+
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
+
+# export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
+
+# rvm default
+
+#---------------------------------------------------------------------
+# Force system language to English
+export LANG="en_US.UTF-8"
+export EMAIL="Aaron Ma <hi@aaronhma.com>"
+
+# Specifying -w will cause the subl command to not exit until the file is closed.
+# http://www.sublimetext.com/docs/2/osx_command_line.html
+# export EDITOR='subl -w'
+export EDITOR=vim
+export VISUAL=vim
+
+#---------------------------------------------------------------------
+# NODE.JS:  Export the node module to use as a locally include
+export NODE_PATH=/usr/local/lib/node_modules/:$PATH
+
+
+# adding gulp auto completion into the env
+# eval "$(gulp --completion=zsh)"
+
+
+#---------------------------------------------------------------------
+# Don’t clear the screen after quitting a manual page
+export MANPAGER="less -X"
+# Highlight section titles in manual pages
+export LESS_TERMCAP_md="$ORANGE"
+
+# Larger bash history (allow 32³ entries; default is 500)
+export HISTSIZE=32768
+export HISTFILESIZE=$HISTSIZE
+export HISTCONTROL=ignoredups
+# Make some commands not show up in history
+export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
 
 # https://github.com/zsh-users/zaw
 source $HOME/bin/dotfiles/plugins/zaw/zaw.zsh
