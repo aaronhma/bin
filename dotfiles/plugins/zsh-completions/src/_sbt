@@ -86,7 +86,7 @@ _arguments \
   '-sbt-jar[use the specified jar as the sbt launcher]' \
   '(-sbt-snapshot)-sbt-rc[use an RC version of sbt]' \
   '(-sbt-rc)-sbt-snapshot[use a snapshot version of sbt]' \
-  '-java-home[alternate JAVA_HOME]' \
+  '-java-home[alternate ]' \
   '*:: :->subcmds' && return 0
 
 _describe -t commands "sbt subcommand" _sbt_commands

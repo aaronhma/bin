@@ -20,6 +20,11 @@ alias preview="open -a '/Applications/preview.app'"
 
 alias desktop='cd ~/Desktop'
 
+# brew
+alias doctor='echo "Calling doctor..."; history -c; softwareupdate -l;
+brew update; brew upgrade;
+brew cleanup; brew doctor'
+
 #############################
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
