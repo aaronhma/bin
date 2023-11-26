@@ -2,34 +2,24 @@
 # export LDFLAGS="-L/usr/local/opt/openssl/lib"
 # export CPPFLAGS="-I/usr/local/opt/openssl/include"
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.0.4.1.jdk/Contents/Home
-export JAVA_PACKAGE_PATH=$JAVA_HOME/bin
+export CPP_PACKAGE_PATH=/usr/local/Cellar/gcc/13.2.0/bin
 
-export CPP_PACKAGE_PATH=/usr/local/Cellar/gcc/13.1.0/bin
-
-# export CC=$CPP_PACKAGE_PATH/g++-13
-# export CXX=$CPP_PACKAGE_PATH/g++-13
 export CC=$CPP_PACKAGE_PATH/g++-13
 export CXX=$CPP_PACKAGE_PATH/g++-13
-# alias CC=$CPP_PACKAGE_PATH/g++-13
 
-# alias clang="$CPP_PACKAGE_PATH/c++-13"
-# alias gcc="$CPP_PACKAGE_PATH/c++-13"
-# alias g++="$CPP_PACKAGE_PATH/c++-13"
-# alias c++="$CPP_PACKAGE_PATH/c++-13"
 alias clang=g++-13
 alias gcc=g++-13
 alias g++=g++-13
 alias c++=g++-13
 
-export PYTHON3_PACKAGE_PATH=/usr/local/Cellar/python@3.11/3.11.3/bin
+export PYTHON3_PACKAGE_PATH=/usr/local/bin/python3
 
 export CMAKE_PREFIX_PATH=/usr/local/bin/cmake
 # export PATH=$PATH:/usr/local/opt/qt/bin
 
 # Set PATH, CDPATH, EDITOR, etc.
 # PATH variable for use with MacPorts. /opt/local/bin
-export PATH=$CPP_PACKAGE_PATH:$JAVA_PACKAGE_PATH:$PYTHON3_PACKAGE_PATH:$CMAKE_PREFIX_PATH:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/sbin:/bin:/usr/bin:/opt/local/bin:/opt/local/sbin:$HOME/local/bin:/sbin/:$HOME/bin/dotfiles/plugins/zsh-completions/src
+export PATH=$CPP_PACKAGE_PATH:$JAVA_PACKAGE_PATH:$PYTHON3_PACKAGE_PATH:$CMAKE_PREFIX_PATH:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/sbin:/bin:/usr/bin:/opt/local/bin:/opt/local/sbin:$HOME/local/bin:/sbin/
 
 # set vim options
 export VIMINIT='set ai aw'
@@ -50,25 +40,6 @@ set -o noclobber
 
 source $HOME/bin/dotfiles/plugins/z/z.sh
 
-# https://github.com/aziz/tmuxinator
-
-# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
-
-# export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
-
-# rvm default
-
-#---------------------------------------------------------------------
-# Force system language to English
-export LANG="en_US.UTF-8"
-export EMAIL="Aaron Ma <aaronhma@gmail.com>"
-
-# Specifying -w will cause the subl command to not exit until the file is closed.
-# http://www.sublimetext.com/docs/2/osx_command_line.html
-# export EDITOR='subl -w'
-export EDITOR=vim
-export VISUAL=vim
-
 #---------------------------------------------------------------------
 # NODE.JS:  Export the node module to use as a locally include
 export NODE_PATH=/usr/local/lib/node_modules/:$PATH
@@ -79,7 +50,7 @@ export NODE_PATH=/usr/local/lib/node_modules/:$PATH
 
 
 #---------------------------------------------------------------------
-# Don’t clear the screen after quitting a manual page
+# Don't clear the screen after quitting a manual page
 export MANPAGER="less -X"
 # Highlight section titles in manual pages
 export LESS_TERMCAP_md="$ORANGE"
@@ -93,28 +64,3 @@ export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
 
 # https://github.com/zsh-users/zsh-syntax-highlighting
 source $HOME/bin/dotfiles/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# https://github.com/zsh-users/zsh-history-substring-search
-source $HOME/bin/dotfiles/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-
-# https://iterm2.com/documentation-shell-integration.html
-# Alert: Shell intergration need to install the script first
-source ~/.iterm2_shell_integration.zsh
-
-# bind UP and DOWN arrow keys
-zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-
-# bind UP and DOWN arrow keys (compatibility fallback
-# for Ubuntu 12.04, Fedora 21, and MacOSX 10.9 users)
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
-# bind P and N for EMACS mode
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
-
-# bind k and j for VI mode
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down

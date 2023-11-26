@@ -26,10 +26,7 @@ ZSH=$HOME/.oh-my-zsh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # plugins=(osx git git-flow gem)
-plugins=(osx)
-# need and use to load binary in PATH
-# export GOPATH=$HOME/go
-# export KPATH=$HOME/code/kubernetes
+plugins=()
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/bin/dotfiles/zshrc
@@ -39,21 +36,4 @@ function precmd () {
 	_z --add "$(pwd -P)"
 }
 
-# [SCM_Breeze](https://github.com/ndbroadbent/scm_breeze)
-# [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
-
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-###-tns-completion-start-###
-# if [ -f /Users/aaronma/.tnsrc ]; then
-#     source /Users/aaronma/.tnsrc
-# fi
-###-tns-completion-end-###
-
-export NVM_DIR="/Users/aaronma/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-export PATH="/usr/local/opt/sqlite/bin:$PATH"
-export PATH="/usr/local/opt/openssl/bin:$PATH"

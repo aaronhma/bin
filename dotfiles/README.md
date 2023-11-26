@@ -1,3 +1,3 @@
-# Bin
+# dotfiles
 
-the main stuff
+## all the main stuff

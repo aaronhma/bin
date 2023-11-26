@@ -27,11 +27,12 @@
 # vim: ft=zsh sw=2 ts=2 et
 # -------------------------------------------------------------------------------------------------
 
-ZSH_HIGHLIGHT_STYLES[commandseparator]=$unused_highlight
-
-BUFFER=':; pwd'
+BUFFER=':; pwd &! ls'
 
 expected_region_highlight=(
-  "2 2 $ZSH_HIGHLIGHT_STYLES[commandseparator]" # ;
-  "4 6 $ZSH_HIGHLIGHT_STYLES[builtin]" # pwd
+  "1 1 builtin" # :
+  "2 2 commandseparator" # ;
+  "4 6 builtin" # pwd
+  "8 9 commandseparator" # &!
+  "11 12 command" # ls
 )
