@@ -31,6 +31,9 @@ Some Bash scripts in macOS Catalina and later are kept for compatibility purpose
 1. Copy [this](https://github.com/aaronhma/bin/commit/c8547427195fc4c71441db5172f4fcdc2f120730#diff-9a5cc2bb8b28fdb05ee455514ea6fac831f6f05e3e5aee75026cce25de65e7c3) and put it into `dotfiles/plugins/completion/ssh.completion.bash`.
 2. Add `. ~/bin/dotfiles/plugins/completion/ssh.completion.bash` into `dotfiles/bashrc`.
 
+[more on tecadmin...](https://tecadmin.net/enable-bash-completion-on-macos/)
+[more on StackOverflow...](https://stackoverflow.com/questions/61539494/how-does-bash-do-ssh-autocompletion)
+
 #### 3. Terminals
 
 1. Apple Terminal [[1]](https://apple.stackexchange.com/a/382327)
@@ -44,6 +47,10 @@ See [github/gitignore](https://github.com/github/gitignore).
 #### 5. `scm_breeze` removed
 
 See [scmbreeze/scm_breeze](https://github.com/scmbreeze/scm_breeze).
+
+#### 6. More Zsh Autocomplete
+
+See [marlonrichert/zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete).
 
 ### Releases
 
