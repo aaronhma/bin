@@ -4,6 +4,8 @@
 
 ### Notes
 
+#### install oh my zsh!!!
+
 #### 0. macOS Changes
 
 In macOS Catalina, [Apple replaced Bash with Zsh as the default login shell](https://support.apple.com/en-ca/HT208050). This is true of Apple Silicon Macs as well. The majority of Bash scripts have been removed, but are available [here](https://github.com/aaronhma/bin/commit/c8547427195fc4c71441db5172f4fcdc2f120730).
