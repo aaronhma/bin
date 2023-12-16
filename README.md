@@ -2,7 +2,17 @@
 
 ## Getting Started
 
-Starting in v0.0.3, all Bash scripts have been removed, but an archive is available [here](https://github.com/aaronhma/bin/commit/c8547427195fc4c71441db5172f4fcdc2f120730).
+<details>
+
+<summary>🚨 MAJOR UPCOMING CHANGES in v0.0.4 🚨</summary>
+
+Starting in v0.0.3 (released 11/26/2023 with build ID **2023.A2**), all Bash scripts have been removed, but an archive is available [here](https://github.com/aaronhma/bin/commit/c8547427195fc4c71441db5172f4fcdc2f120730).
+
+Starting v0.0.4 (released 12/??/2023 with build ID **2023.A3**), all Intel Mac support will be deprecated.
+
+</details>
+
+---
 
 ### 1. Install [Oh My Zsh](https://ohmyz.sh/).
 
