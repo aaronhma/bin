@@ -1,3 +1,63 @@
+export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
+
+# Set PATH, CDPATH, EDITOR, etc.
+# PATH variable for use with MacPorts. /opt/local/bin
+export PATH=$RUBY_PATH:$RUBY_GEM_PATH:$CPP_PACKAGE_PATH:$PYTHON3_PACKAGE_PATH:$CMAKE_PREFIX_PATH:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/sbin:/bin:/usr/bin:/opt/local/bin:/opt/local/sbin:$HOME/local/bin:/sbin/
+
+# set vim options
+export VIMINIT='set ai aw'
+
+# Window names are not displaying properly
+export DISABLE_AUTO_TITLE=true
+
+# Prevent overwriting files
+# set +/-o :  turns shell features On/Off
+set -o noclobber
+
+# launchctl limit maxfiles 2048 7200
+
+# ulimit -n 1000
+
+# Turn off "you have new mail" notice
+# unset MAILCHECK
+
+#---------------------------------------------------------------------
+# NODE.JS:  Export the node module to use as a locally include
+export NODE_PATH=/usr/local/lib/node_modules/:$PATH
+
+
+# adding gulp auto completion into the env
+# eval "$(gulp --completion=zsh)"
+
+#---------------------------------------------------------------------
+# Don't clear the screen after quitting a manual page
+export MANPAGER="less -X"
+# Highlight section titles in manual pages
+export LESS_TERMCAP_md="$ORANGE"
+
+export HISTCONTROL=ignoredups
+# Make some commands not show up in history
+export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
+
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+
 alias reload='source ~/.zshrc'
 
 alias pip='python3 -m pip'
@@ -6,19 +66,12 @@ alias jupyter='python3 -m jupyter'
 # brew
 alias doctor='echo "Calling doctor..."; history -c; softwareupdate -l; brew update; brew upgrade; brew cleanup; brew doctor'
 
-#############################
-# Easier navigation: .., ..., ...., ....., ~ and -
-alias ..="cd .."
-alias ~="cd ~" # `cd` is probably faster to type though
 alias p='cd -'  # goto last dir cd'ed from
-alias s='cd ..'   # up one dir
 # Open current directory in Tree View
 if [ ! -x "$(which tree 2>/dev/null)" ]
 then
   alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 fi
-# function cr() {  cd ~/repos/$* }   # Quicker cd
-
 
 # Show list of files or directories
 alias l='ls -lhGt'  # -l long listing, most recent first  # -G color
@@ -45,12 +98,6 @@ else
 	export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
 fi
 
-
-# Clear the current window
-alias c='clear'
-
-alias q='exit'
-
 alias h='history | tail'
 alias md='mkdir -p'
 alias rm='rm -i' #always do interactive rm's
@@ -74,14 +121,6 @@ alias gl1="git rev-list --all --pretty=format:'%C(red)%h%C(reset) %C(dim white)%
 
 alias gla="glog --author " #get specific author's commits
 
-#  ============
-#  = Git_Scripts = https://github.com/jwiegley/git-scripts
-#  ============
-
-#  ===========================
-#  = Super Awesome functions =
-#  ===========================
-#
 # Zip the name of the folder in the same directory
 function zip() {
 	zip -r $1.zip $1
