@@ -1,9 +1,121 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/Users/aaronma/.zsh/completions:"* ]]; then export FPATH="/Users/aaronma/.zsh/completions:$FPATH"; fi
+# defaults write com.apple.Finder AppleShowAllFiles YES
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/aaronma/.oh-my-zsh"
+
+# echo $RANDOM_THEME - see https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+
+source $ZSH/oh-my-zsh.sh
+
+alias clear="paclear -c yellow"
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# For a full list of active aliases, run `alias`.
+alias nproc="sysctl -n hw.logicalcpu"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# brew completions
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+eval "$(zoxide init zsh)"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+
+
 export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
 
-# Set PATH, CDPATH, EDITOR, etc.
-# PATH variable for use with MacPorts. /opt/local/bin
-export PATH=$RUBY_PATH:$RUBY_GEM_PATH:$CPP_PACKAGE_PATH:$PYTHON3_PACKAGE_PATH:$CMAKE_PREFIX_PATH:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/sbin:/bin:/usr/bin:/opt/local/bin:/opt/local/sbin:$HOME/local/bin:/sbin/
+export PATH=/opt/homebrew/anaconda3/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/git/bin:/opt/homebrew/opt/ruby/bin:/usr/local/sbin:/usr/sbin:/bin:/usr/bin:/opt/local/bin:/opt/local/sbin:$HOME/local/bin:/sbin/:$HOME/.bun/bin:/usr/local/lib/node_modules/:/Users/aaronma/.cache/lm-studio/bin:/Users/aaronma/.local/bin
 
 # set vim options
 export VIMINIT='set ai aw'
@@ -21,10 +133,6 @@ set -o noclobber
 
 # Turn off "you have new mail" notice
 # unset MAILCHECK
-
-#---------------------------------------------------------------------
-# NODE.JS:  Export the node module to use as a locally include
-export NODE_PATH=/usr/local/lib/node_modules/:$PATH
 
 
 # adding gulp auto completion into the env
@@ -58,13 +166,15 @@ export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
 #---------------------------------------------------------------------
 #---------------------------------------------------------------------
 
+alias nvim="nvim -c 'luafile ~/.config/nvim/init.lua'"
+
 alias reload='source ~/.zshrc'
 
 alias pip='python3 -m pip'
 alias jupyter='python3 -m jupyter'
 
 # brew
-alias doctor='echo "Calling doctor..."; history -c; softwareupdate -l; brew update; brew upgrade; brew cleanup; brew doctor'
+alias doctor='history -c; softwareupdate -l; brew update; brew upgrade; brew cleanup; brew doctor'
 
 alias p='cd -'  # goto last dir cd'ed from
 # Open current directory in Tree View
@@ -112,27 +222,9 @@ alias rm='rm -i' #always do interactive rm's
 
 # TODO: 1 git command to push everything with a prompt "what's your commit message?"
 
-#alias glog="git log --pretty='format:%Cgreen%h%Creset %an - %s' --graph"
-alias glog="git log --graph --pretty=format:'%C(red)%h%C(reset) %C(dim white)%an%C(reset): %C(cyan)%s - %C(reset) %C(yellow)%d%C(reset) %C(dim white)(%cr)%Creset' --abbrev-commit --date=relative"
-alias glog2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold red)%h%C(reset) - %C(bold green)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
-
-# gl1 foo.txt  // a list of all commits containg foo.txt
-alias gl1="git rev-list --all --pretty=format:'%C(red)%h%C(reset) %C(dim white)%an%C(reset): %C(cyan)%s - %C(reset) %C(yellow)%d%C(reset) %C(dim white)(%cr)%Creset' "
+alias glog="git log --graph --abbrev-commit --decorate --format=format:'%C(bold red)%h%C(reset) - %C(bold green)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
 alias gla="glog --author " #get specific author's commits
-
-# Zip the name of the folder in the same directory
-function zip() {
-	zip -r $1.zip $1
-}
-
-# Get gzipped file size
-function gz() {
-	echo "orig size (bytes): "
-	cat "$1" | wc -c
-	echo "gzipped size (bytes): "
-	gzip -c "$1" | wc -c
-}
 
 # Create a data URL from an image (works for other file types too, if you tweak the Content-Type afterwards)
 function dataurl() {
@@ -154,11 +246,6 @@ function httpcompression() {
 	encoding="$(curl -LIs -H 'User-Agent: Mozilla/5 Gecko' -H 'Accept-Encoding: gzip,deflate,compress,sdch' "$1" | grep '^Content-Encoding:')" && echo "$1 is encoded using ${encoding#* }" || echo "$1 is not using any encoding"
 }
 
-# Gzip-enabled `curl`
-function gurl() {
-	curl -sH "Accept-Encoding: gzip" "$@" | gunzip
-}
-
 # Syntax-highlight JSON strings or files
 function json() {
 	if [ -p /dev/stdin ]; then
@@ -168,11 +255,6 @@ function json() {
 		# e.g. `json '{"foo":42}'`
 		python -mjson.tool <<< "$*" | pygmentize -l javascript
 	fi
-}
-
-# All the dig info
-function digga() {
-	dig +nocmd "$1" any +multiline +noall +answer
 }
 
 # Escape UTF-8 characters into their 3-byte format
@@ -193,26 +275,6 @@ function codepoint() {
 	echo # newline
 }
 
-# Find Image width
-function width () {
-	echo $(sips -g pixelWidth $1 | grep -oE "[[:digit:]]{1,}$")
-}
-
-# Find Image height
-function height () {
-	echo $(sips -g pixelHeight $1 | grep -oE "[[:digit:]]{1,}$")
-}
-
-
-#  ====================
-#  = System Processes =
-#  ====================
-alias tu='top -o cpu' # cpu
-alias tm='top -o vsize' # memory
-
-# Empty the Trash on all mounted volumes and the main HDD. Also, clear Apple’s System Logs to improve shell startup speed
-alias emptytrash="sudo rm -rfv ~/.Trash;"
-
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
@@ -227,22 +289,13 @@ alias rot13='tr a-zA-Z n-za-mN-ZA-M'
 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder"
+# defaults write com.apple.finder AppleShowAllFiles true
 
-# Show the path in the finder new window. One time edit
-alias showPath="defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES && killall Finder"
-
-# Hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+# Show hidden apps as greyed out on macOS
+# defaults write com.apple.Dock showhidden -bool TRUE && killall Dock
 
 # URL-encode strings
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
-
-# Disable Spotlight
-alias spotoff="sudo mdutil -a -i off"
-# Enable Spotlight
-alias spoton="sudo mdutil -a -i on"
 
 # PlistBuddy alias, because sometimes `defaults` just doesn’t cut it
 alias plistbuddy="/usr/libexec/PlistBuddy"
@@ -295,9 +348,6 @@ function whoson () {
 	who
 }
 
-# Get macOS Software Updates, update Homebrew itself, and upgrade installed Homebrew packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade'
-
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en1"
@@ -312,3 +362,34 @@ alias flush="dscacheutil -flushcache"
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+# gpg
+export GPG_TTY=$(tty)
+
+# Disables the annoying volume up + screenshot hot key on Keychron K3 mechanical keyboard
+# defaults write com.apple.symbolichotkeys 32 -dict-add 65 -int 0
+
+# bun completions
+[ -s "/Users/aaronma/.bun/_bun" ] && source "/Users/aaronma/.bun/_bun"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+. "/Users/aaronma/.deno/env"
+
+# fixes g++/gcc "ld: symbol(s) not found for architecture arm64 collect2: error: ld returned 1 exit status"
+alias gcc=/opt/homebrew/Cellar/gcc/15.1.0/bin/g++-15
+alias g++=/opt/homebrew/Cellar/gcc/15.1.0/bin/g++-15
+# alias clang=/opt/homebrew/Cellar/gcc/15.1.0/bin/g++-15
+# alias clang++=/opt/homebrew/Cellar/gcc/15.1.0/bin/g++-15

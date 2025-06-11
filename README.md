@@ -12,9 +12,9 @@ All Bash scripts have been removed, but an archive is available [here](https://g
 
 ### 2. Terminals
 
-1. Apple Terminal [[1]](https://apple.stackexchange.com/a/382327)
-2. iTerm [[1]](https://iterm2.com/downloads.html), [[2]](https://iterm2.com/documentation-shell-integration.html)
-3. Fig (Amazon CodeWhisperer) [[1]](https://fig.io/), [[2]](https://aws.amazon.com/blogs/devops/introducing-amazon-codewhisperer-for-command-line/)
+1. Ghostty [[1]](https://ghostty.org/)
+2. Apple Terminal [[1]](https://apple.stackexchange.com/a/382327)
+3. iTerm [[1]](https://iterm2.com/downloads.html), [[2]](https://iterm2.com/documentation-shell-integration.html)
 
 ### 3. `dotfiles/root_files/.gitignore_global`
 
@@ -27,3 +27,7 @@ See [scmbreeze/scm_breeze](https://github.com/scmbreeze/scm_breeze).
 ### 5. More Zsh Autocomplete
 
 See [marlonrichert/zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete).
+
+### 6. Setup Xcode
+
+Use the `xcode_scripts/success.sh` to show a confetti animation on successful builds.
